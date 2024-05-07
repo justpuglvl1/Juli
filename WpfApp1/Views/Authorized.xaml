@@ -1,0 +1,35 @@
+﻿<Window x:Class="WpfApp1.Views.Authorized"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Views"
+        mc:Ignorable="d"
+        Title="Authorized" Height="180" Width="320">
+    <Grid Background="Silver">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions >
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="border1" Grid.Row="0">
+            <TextBlock Text="Логин" VerticalAlignment="Top" HorizontalAlignment="Center"></TextBlock>
+            <TextBox Height="25" Width="200" x:Name="box1"></TextBox>
+        </Grid>
+
+        <Grid x:Name="border2"  Grid.Row="1">
+            <TextBlock Text="Pass" VerticalAlignment="Top" HorizontalAlignment="Center"></TextBlock>
+            <TextBox Height="25" Width="200" x:Name="box2"></TextBox>
+        </Grid>
+
+        <Border x:Name="border3" Grid.Row="2">
+            <Button Height="25" Width="200" Content="Войти" Click="Button_Click"/>
+        </Border>
+
+    </Grid>
+</Window>
