@@ -20,10 +20,7 @@
 
         <Grid x:Name="border1" Grid.Row="0">
             <TextBlock Text="Код" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="10"></TextBlock>
-            <TextBox Height="25" Width="160" x:Name="box1">
-                <TextBox.ToolTip>
-                    <ToolTip x:Name="tool"></ToolTip>
-                </TextBox.ToolTip>
+            <TextBox Height="25" Width="160" x:Name="box1" Text="{Binding MyHintText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyUp="box1_KeyUp">
             </TextBox>
         </Grid>
 

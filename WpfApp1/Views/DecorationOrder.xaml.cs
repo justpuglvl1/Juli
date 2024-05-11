@@ -26,7 +26,7 @@ namespace WpfApp1.Views
         List<Client> clients = new List<Client>();
         List<Order> orders = new List<Order>();
         List<ServicesOTK> servicesOTK = new List<ServicesOTK>();
-        string page = "";
+        public string MyHintText { get; set; }
 
         public DecorationOrder()
         {
@@ -96,8 +96,8 @@ namespace WpfApp1.Views
 
                 myConnection.Close();
             }
-            page = Convert.ToString(orders.Last().Id + 1);
-            tool.Content = page;
+            MyHintText = Convert.ToString(orders.Last().Id + 1);
+            box1.ToolTip = new ToolTip { Content = MyHintText };
             cmb.ItemsSource = faces;
         }
 
@@ -141,6 +141,14 @@ namespace WpfApp1.Views
             else
             {
                 MessageBox.Show("Заполните поля");
+            }
+        }
+
+        private void box1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                box1.Text = MyHintText;
             }
         }
     }
