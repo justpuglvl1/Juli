@@ -20,8 +20,7 @@
 
         <Grid x:Name="border1" Grid.Row="0">
             <TextBlock Text="Код" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="10"></TextBlock>
-            <TextBox Height="25" Width="160" x:Name="box1" Text="{Binding MyHintText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyUp="box1_KeyUp">
-            </TextBox>
+            <TextBox Height="25" Width="160" x:Name="box1" KeyUp="box1_KeyUp"></TextBox>
         </Grid>
 
         <Grid x:Name="border2"  Grid.Row="1">

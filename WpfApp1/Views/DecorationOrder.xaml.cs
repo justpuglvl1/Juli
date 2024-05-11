@@ -25,6 +25,7 @@ namespace WpfApp1.Views
         List<string> faces = new List<string>() {"ЮЛ", "ФЛ"};
         List<Client> clients = new List<Client>();
         List<Order> orders = new List<Order>();
+        List<LegalPerson> legalPerson = new List<LegalPerson>();
         List<ServicesOTK> servicesOTK = new List<ServicesOTK>();
         public string MyHintText { get; set; }
 
@@ -52,6 +53,26 @@ namespace WpfApp1.Views
                             client.Name = reader.GetString(6);
 
                             clients.Add(client);
+                        }
+                    }
+                }
+
+                using (OleDbCommand command = new OleDbCommand("SELECT * FROM legal_person", myConnection))
+                {
+                    using (OleDbDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var Person = new LegalPerson();
+                            Person.Id = reader.GetInt32(0);
+                            Person.CompanyName = reader.GetString(1);
+                            Person.Inn = reader.GetString(2);
+                            Person.Director = reader.GetString(3);
+                            Person.ContactPerson = reader.GetString(4);
+                            Person.Number = reader.GetString(5);
+                            Person.Mail = reader.GetString(6);
+
+                            legalPerson.Add(Person);
                         }
                     }
                 }
@@ -111,7 +132,7 @@ namespace WpfApp1.Views
                     if (client.Count() == 0)
                     {
                         MessageBox.Show("Клиент не найден");
-                        AddNaturalPerson addNaturalPerson = new AddNaturalPerson();
+                        AddNaturalPerson addNaturalPerson = new AddNaturalPerson(clients);
                         addNaturalPerson.ShowDialog();
                     }
                     else
@@ -135,7 +156,31 @@ namespace WpfApp1.Views
                 }
                 else
                 {
+                    var legalPersons = legalPerson.Where(x => x.Director == box3.Text).ToList();
+                    if (legalPersons.Count() == 0)
+                    {
+                        MessageBox.Show("Клиент не найден");
+                        AddLegalPerson addLegalPerson = new AddLegalPerson();
+                        addLegalPerson.ShowDialog();
+                    }
+                    else
+                    {
+                        var order = new Order();
 
+                        var service = servicesOTK.Find(x => x.Name == box5.Text);
+
+                        if (service is not null)
+                        {
+                            order.Number = box1.Text;
+                            order.UserId = legalPerson.Find(x => x.Director == box3.Text).Id;
+                            order.Status = "Новая";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Такой услуги нет");
+                        }
+
+                    }
                 }
             }
             else
