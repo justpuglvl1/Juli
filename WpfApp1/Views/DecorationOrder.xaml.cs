@@ -157,15 +157,15 @@ namespace WpfApp1.Views
                     {
                         var order = new Order();
 
-                        string[] services = box5.Text.Split(',');
+                        string[] services = box5.Text.Split(','); // services {"Шлифовка", "Чистка"}
                         int money = 0;
 
 
-                        if (services is not null)
+                        if (services != null)
                         {
                             foreach (var a in services)
                             {
-                                var service = servicesOTK.Find(x => x.Name.Contains(a));
+                                var service = servicesOTK.FirstOrDefault(x => x.Name.ToLower().Contains(a.ToLower()));
 
                                 money += Convert.ToInt32(service.Salary);
                             }
@@ -174,6 +174,9 @@ namespace WpfApp1.Views
                             order.UserId = legalPerson.Find(x => x.Director.Contains(box5.Text)).Id;
                             order.Status = "Новая";
                             order.Salary = money.ToString();
+
+
+                            
                         }
                         else
                         {
