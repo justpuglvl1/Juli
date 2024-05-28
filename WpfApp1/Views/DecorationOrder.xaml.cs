@@ -157,19 +157,28 @@ namespace WpfApp1.Views
                     {
                         var order = new Order();
 
-                        var service = servicesOTK.Find(x => x.Name == box5.Text);
+                        string[] services = box5.Text.Split(',');
+                        int money = 0;
 
-                        if (service is not null)
+
+                        if (services is not null)
                         {
+                            foreach (var a in services)
+                            {
+                                var service = servicesOTK.Find(x => x.Name.Contains(a));
+
+                                money += Convert.ToInt32(service.Salary);
+                            }
+
                             order.Number = box1.Text;
-                            order.UserId = legalPerson.Find(x => x.Director == box3.Text).Id;
+                            order.UserId = legalPerson.Find(x => x.Director.Contains(box5.Text)).Id;
                             order.Status = "Новая";
+                            order.Salary = money.ToString();
                         }
                         else
                         {
                             MessageBox.Show("Такой услуги нет");
                         }
-
                     }
                 }
             }
