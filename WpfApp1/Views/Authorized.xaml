@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.Views"
         mc:Ignorable="d"
-        Title="Authorized" Height="180" Width="320">
-    <Grid Background="Silver">
+        Title="Authorized" Height="200" Width="320">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\artem\OneDrive\Desktop\Рабочий столд\1668572683_7-2.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -16,6 +20,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
 
         <Grid x:Name="border1" Grid.Row="0">
             <TextBlock Text="Логин" VerticalAlignment="Top" HorizontalAlignment="Center"></TextBlock>

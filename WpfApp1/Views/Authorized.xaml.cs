@@ -1,5 +1,7 @@
 ﻿using System.Data.OleDb;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using WpfApp1.Data;
 using WpfApp1.Model;
 
@@ -15,7 +17,6 @@ namespace WpfApp1.Views
         public Authorized()
         {
             InitializeComponent();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

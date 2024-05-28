@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.OleDb;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WpfApp1.Data;
 using WpfApp1.Model;
 
@@ -22,7 +12,7 @@ namespace WpfApp1.Views
     /// </summary>
     public partial class DecorationOrder : Window
     {
-        List<string> faces = new List<string>() {"ЮЛ", "ФЛ"};
+        List<string> faces = new List<string>() { "ЮЛ", "ФЛ" };
         List<Client> clients = new List<Client>();
         List<Order> orders = new List<Order>();
         List<LegalPerson> legalPerson = new List<LegalPerson>();
@@ -124,7 +114,7 @@ namespace WpfApp1.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(cmb.SelectedItem is not null && box1.Text is not null && box3.Text is not null)
+            if (cmb.SelectedItem is not null && box1.Text is not null && box3.Text is not null)
             {
                 if (cmb.SelectedItem == "ФЛ")
                 {
@@ -141,7 +131,7 @@ namespace WpfApp1.Views
 
                         var service = servicesOTK.Find(x => x.Name == box5.Text);
 
-                        if(service is not null)
+                        if (service is not null)
                         {
                             order.Number = box1.Text;
                             order.UserId = clients.Find(x => x.Name == box3.Text).Id;
@@ -195,6 +185,12 @@ namespace WpfApp1.Views
             {
                 box1.Text = MyHintText;
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ServiceView serviceView = new ServiceView();
+            serviceView.ShowDialog();
         }
     }
 }
