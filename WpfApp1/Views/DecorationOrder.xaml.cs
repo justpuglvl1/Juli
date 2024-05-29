@@ -165,7 +165,7 @@ namespace WpfApp1.Views
                         {
                             foreach (var a in services)
                             {
-                                var service = servicesOTK.FirstOrDefault(x => x.Name.ToLower().Contains(a.ToLower()));
+                                var service = servicesOTK.FirstOrDefault(x => x.Name.ToLower() == a.Trim().ToLower());
 
                                 money += Convert.ToInt32(service.Salary);
                             }
